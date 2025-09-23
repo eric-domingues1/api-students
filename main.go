@@ -29,9 +29,9 @@ func main() {
 
 // Handler
 func getStudents(c echo.Context) error {
-	return c.String(http.StatusOK, "List of all students")
+	return c.String(http.StatusOK, "List of all students ")
 }
 
 func getTeachers(c echo.Context) error {
-	return c.String(http.StatusOK, "List of all teachers")
+	return c.String(http.StatusOK, "List of all teachers ")
 }
