@@ -1,8 +1,9 @@
-module github.com/darkpk01/api-students
+module github.com/ericdomingues1/api-students
 
 go 1.24.4
 
 require (
+	github.com/darkpk01/api-students v0.0.0-20251002003622-e1dbdcc5de0a
 	github.com/labstack/echo/v4 v4.13.4
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.31.0
