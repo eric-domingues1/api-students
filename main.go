@@ -1,9 +1,8 @@
 package main
 
 import (
-	"log"
-
-	api "github.com/darkpk01/api-students/db/Api"
+	"github.com/eric-domingues1/api-students/api"
+	"github.com/rs/zerolog/log"
 )
 
 func main() {
@@ -12,6 +11,6 @@ func main() {
 	server.ConfigureRoutes()
 
 	if err := server.Start(); err != nil {
-		log.Fatal(err)
+		log.Fatal().Err(err).Msgf("Failed to start server")
 	}
 }
