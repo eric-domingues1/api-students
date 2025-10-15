@@ -50,6 +50,12 @@ func (s *StudentHandler) AddStudent(student Student) error {
 
 func (s *StudentHandler) GetStudents() ([]Student, error) {
 	students := []Student{}
-	err := s.DB.Find(&students).Error // DB apontando para students  procura o que tem no BD e preencher o que achar dentro da Variavel students
+	err := s.DB.Find(&students).Error
 	return students, err
+}
+
+func (s *StudentHandler) GetStudent(id int) (Student, error) {
+	var student Student
+	err := s.DB.First(&student, id)
+	return student, err.Error
 }
