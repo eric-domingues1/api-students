@@ -1,3 +1,10 @@
+// @title Student API
+// @version 1.0
+// @description This is a sample Student API built with Echo and Swagger
+// @host localhost:8080
+// @BasePath /
+// @schemes http
+
 package main
 
 import (

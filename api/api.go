@@ -2,9 +2,19 @@ package api
 
 import (
 	"github.com/eric-domingues1/api-students/db"
+
+	_ "github.com/eric-domingues1/api-students/docs"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
+
+// @title Student API
+// @version 1.0
+// @description This is a sample server Student API
+// @host localhost:8080
+// @BasePath /
+// @schemes http
 
 type API struct {
 	Echo *echo.Echo
@@ -35,6 +45,7 @@ func (api *API) ConfigureRoutes() {
 	api.Echo.GET("/students/:id", api.getStudent)
 	api.Echo.PUT("/students/:id", api.updateStudent)
 	api.Echo.DELETE("/students/:id", api.deleteStudent)
+	api.Echo.GET("/swagger/*", echoSwagger.WrapHandler)
 
 }
 
