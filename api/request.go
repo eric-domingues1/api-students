@@ -7,7 +7,7 @@ type StudentRequest struct {
 	CPF    int    `json:"cpf"`
 	Email  string `json:"email"`
 	Age    int    `json:"age"`
-	Active *bool  `json:"active"` // Forçar input true ou false
+	Active *bool  `json:"active"` // using bool as a pointer to force a true/false input
 }
 
 func errParamRequired(param, typ string) error {
@@ -15,7 +15,6 @@ func errParamRequired(param, typ string) error {
 }
 
 func (s *StudentRequest) Validate() error {
-
 	if s.Name == "" {
 		return errParamRequired("name", "string")
 	}

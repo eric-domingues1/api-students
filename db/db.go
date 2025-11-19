@@ -2,10 +2,10 @@ package db
 
 import (
 	"github.com/rs/zerolog/log"
-
-	"github.com/eric-domingues1/api-students/schemas"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+
+	"github.com/eric-domingues1/api-students/schemas"
 )
 
 type StudentHandler struct {
@@ -16,13 +16,11 @@ func Init() *gorm.DB {
 	db, err := gorm.Open(sqlite.Open("student.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal().Err(err).Msgf("Failed to initialize SQLite: %s", err.Error())
-
 	}
 
 	db.AutoMigrate(&schemas.Student{})
 
 	return db
-
 }
 
 func NewStudentHandler(db *gorm.DB) *StudentHandler {
@@ -30,7 +28,6 @@ func NewStudentHandler(db *gorm.DB) *StudentHandler {
 }
 
 func (s *StudentHandler) AddStudent(student schemas.Student) error {
-
 	if result := s.DB.Create(&student); result.Error != nil {
 		log.Error().Msg("Failed to create student")
 		return result.Error
@@ -51,10 +48,11 @@ func (s *StudentHandler) GetFilteredStudent(active bool) ([]schemas.Student, err
 	err := s.DB.Where("active = ?", active).Find(&filteredStudents)
 	return filteredStudents, err.Error
 }
+
 func (s *StudentHandler) GetStudent(id int) (schemas.Student, error) {
 	var student schemas.Student
-	result := s.DB.First(&student, id)
-	return student, result.Error
+	err := s.DB.First(&student, id)
+	return student, err.Error
 }
 
 func (s *StudentHandler) UpdateStudent(updateStudent schemas.Student) error {

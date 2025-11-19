@@ -18,7 +18,7 @@ type Student struct {
 type StudentResponse struct {
 	ID        int       `json:"id"`
 	CreatedAt time.Time `json:"createdAt"`
-	UpdateAt  time.Time `json:"updateAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
 	DeletedAt time.Time `json:"deletedAt"`
 	Name      string    `json:"name"`
 	CPF       int       `json:"cpf"`
@@ -29,11 +29,12 @@ type StudentResponse struct {
 
 func NewResponse(students []Student) []StudentResponse {
 	studentsResponse := []StudentResponse{}
+
 	for _, student := range students {
 		studentResponse := StudentResponse{
 			ID:        int(student.ID),
 			CreatedAt: student.CreatedAt,
-			UpdateAt:  student.UpdatedAt,
+			UpdatedAt: student.UpdatedAt,
 			Name:      student.Name,
 			Email:     student.Email,
 			Age:       student.Age,
@@ -41,8 +42,6 @@ func NewResponse(students []Student) []StudentResponse {
 			Active:    student.Active,
 		}
 		studentsResponse = append(studentsResponse, studentResponse)
-
 	}
 	return studentsResponse
-
 }
